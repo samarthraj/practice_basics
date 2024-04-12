@@ -5,9 +5,10 @@ def func(i,n):
         return
     func(i-1,n)
     print(i)    
-    
+
 i = 5
 n = 5
 res = func(i,n)
 print(res)
+
 
