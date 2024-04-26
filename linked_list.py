@@ -5,8 +5,10 @@ class Node:
         self.data = data
         self.next = next
 
-
+# practicing to commit modified files
 # next we define the actual linked list which has head pointing to null and the linked list is empty initially
+
+
 class LinkedList:
     def __init__(self):
         self.head = None
