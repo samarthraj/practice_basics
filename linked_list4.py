@@ -1,29 +1,27 @@
-# convert a list to an array in Linked List
-# first we have to define a node in a Linked List
-# length of the linked List
+# Convert an array to linked List - Done
 # Check if a given value is present in linked list or not
+# length_of_linked_list
+
+# first we define the node
 class Node:
     def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
 
-# next we define the LL class itself which contains the head pointer only initially
-# this is a modified script
+# we have the LL class in which its empty first with only head pointing to none
 
 
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    # this method checks if the head is pointing to a node or not, i.e. null or not
-    # also call the new node here
     def append(self, data):
         new_node = Node(data)
+        # check if head is null or not
         if self.head is None:
             self.head = new_node
         else:
             current = self.head
-            # means the next pointer is not null up until then run the loop
             while current.next:
                 current = current.next
             current.next = new_node
@@ -35,31 +33,31 @@ class LinkedList:
             current = current.next
         print('None')
 
-    def length_of_linked_list(self):
-        ct = 0
+    def check_value(self, value):
         current = self.head
-        while current:
+        while current:  # i.e. not null
+            if current.data == value:
+                return ('Yes Present')
+            current = current.next
+        return ('Not Present')
+
+    def length_of_array(self):
+        current = self.head
+        ct = 0
+        while current:  # not pointing towards null
             ct += 1
             current = current.next
-        print(ct)
-
-    def check_if_present(self, value):
-        current = self.head
-        while current:
-            if current.data == value:
-                return ("Present")
-            current = current.next
-        return ("Not Present")
+        return ct
 
 
-arr = [4, 5, 1, 7, 10]
+arr = [2, 4, 6, 8, 10, 67, 5]
 linked_list = LinkedList()
 
 for data in arr:
     linked_list.append(data)
 
-linked_list.length_of_linked_list()
+linked_list.display()
 
-value = 12
-res = linked_list.check_if_present(value)
-print(res)
+print(linked_list.check_value(4))
+
+print(linked_list.length_of_array())

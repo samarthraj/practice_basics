@@ -1,14 +1,11 @@
-# convert a list to an array in Linked List
-# first we have to define a node in a Linked List
-# length of the linked List
-# Check if a given value is present in linked list or not
+# deletion of head and
+# deletion of a node in LL
 class Node:
     def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
 
 # next we define the LL class itself which contains the head pointer only initially
-# this is a modified script
 
 
 class LinkedList:
@@ -35,21 +32,20 @@ class LinkedList:
             current = current.next
         print('None')
 
-    def length_of_linked_list(self):
-        ct = 0
-        current = self.head
-        while current:
-            ct += 1
-            current = current.next
-        print(ct)
+    def delete(self, del_value):
+        if self.head is None:
+            return
 
-    def check_if_present(self, value):
+        if self.head.data == del_value:
+            self.head = self.head.next
+            return
+
         current = self.head
-        while current:
-            if current.data == value:
-                return ("Present")
+        while current.next:
+            if current.next.data == del_value:
+                current.next = current.next.next
+                return
             current = current.next
-        return ("Not Present")
 
 
 arr = [4, 5, 1, 7, 10]
@@ -58,8 +54,13 @@ linked_list = LinkedList()
 for data in arr:
     linked_list.append(data)
 
-linked_list.length_of_linked_list()
+# linked_list.length_of_linked_list()
 
-value = 12
-res = linked_list.check_if_present(value)
-print(res)
+# value = 12
+# res = linked_list.check_if_present(value)
+# print(res)
+
+del_value = 4
+linked_list.delete(del_value)
+
+linked_list.display()
