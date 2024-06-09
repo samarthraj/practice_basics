@@ -24,7 +24,7 @@ def binary_search_insert_target(arr, m):
     return ans
 
 
-arr = [1, 2, 4, 7]
-m = 3
+arr = [65, 63, 39, 57, 9, 29]
+m = 2
 res = binary_search_insert_target(arr, m)
 print(res)

@@ -1,6 +1,6 @@
 # move all zeros to the end
 def move_all_zeros(arr):
-    j = -1
+    j = 0
     for i in range(0,len(arr)):
         if arr[i] == 0: 
             j = i 
@@ -15,6 +15,6 @@ def move_all_zeros(arr):
 
     return arr
 
-arr = [1, 0, 2, 0, 0, 3, 4]
+arr = [1, 0, 2, 4, 5, 6, 7, 0, 0, 3, 4]
 res = move_all_zeros(arr)
 print(res)

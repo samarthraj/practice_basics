@@ -18,7 +18,7 @@ def getFloorAndCeil(a, n, x):
         
 
 n = 6
-x = 8
-a = [3, 4, 7, 8, 8, 10] 
+x = 2
+a = [65, 63, 39, 57, 9, 29]
 res = getFloorAndCeil(a, n, x)
 print(res)

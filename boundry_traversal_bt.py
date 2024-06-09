@@ -1,0 +1,76 @@
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def is_leaf(node):
+    return node is not None and node.left is None and node.right is None
+
+
+def add_left_boundry(node, result):
+    current = node.left
+    while current:
+        if not is_leaf(current):
+            result.append(current.val)
+        if current.left:
+            current = current.left
+        else:
+            current = current.right
+
+
+def add_leaf(node, result):
+    if node is None:
+        return []
+
+    if is_leaf(node):
+        result.append(node.val)
+    else:
+        add_leaf(node.left, result)
+        add_leaf(node.right, result)
+
+
+def add_right_boundry(node, result):
+    current = node.right
+    temp = []
+    while current:
+        if not is_leaf(current):
+            temp.append(current.val)
+
+        if current.right:
+            current = current.right
+        else:
+            current = current.left
+
+    result.extend(temp[::-1])
+
+
+def boundary_traversal(root):
+    if root is None:
+        return []
+
+    result = []
+
+    if not is_leaf(root):
+        result.append(root.val)
+
+    add_left_boundry(root, result)
+    add_leaf(root, result)
+    add_right_boundry(root, result)
+
+    return result
+
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+root.right.left = TreeNode(6)
+root.right.right = TreeNode(7)
+root.left.right.left = TreeNode(8)
+root.left.right.right = TreeNode(9)
+
+print(boundary_traversal(root))
+# Output: [1, 2, 4, 8, 9, 6, 7, 3]
